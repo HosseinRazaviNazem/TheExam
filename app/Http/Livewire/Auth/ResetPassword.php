@@ -2,10 +2,9 @@
 
 namespace App\Http\Livewire\Auth;
 
-use Livewire\Component;
 use App\Models\User;
-Use Str;
-use Illuminate\Auth\Events\PasswordReset;
+use Livewire\Component;
+use Str;
 
 class ResetPassword extends Component
 {
@@ -30,12 +29,12 @@ class ResetPassword extends Component
     }
 
     public function update(){
-        
-        $this->validate(); 
-          
+
+        $this->validate();
+
         $existingUser = User::where('email', $this->email)->first();
 
-        if($existingUser && $existingUser->id == $this->urlID) { 
+        if($existingUser && $existingUser->id == $this->urlID) {
             $existingUser->update([
                 'password' => $this->password
             ]);
@@ -43,7 +42,7 @@ class ResetPassword extends Component
         } else {
             return back()->with('email', "We can't find any user with that email address.");
         }
-    
+
     }
 
 }
