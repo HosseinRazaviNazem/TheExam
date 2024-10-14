@@ -41,7 +41,7 @@
                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             Edit
                         </a>
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete task">
+                        <a href="javascript:;" wire:click="delete({{ $todo->id }})" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete task">
                             Delete
                         </a>
                     </td>
