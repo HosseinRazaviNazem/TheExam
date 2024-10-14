@@ -18,9 +18,16 @@ class TodoController extends Controller
 
     public function store(StoreTodoRequest $request)
     {
-        $invoice = Todo::create($request->validated());
+        $todo = Todo::create($request->validated());
 
-        return new TodoResource($invoice);
-
+        return new TodoResource($todo);
     }
+    public function show($id)
+    {
+        $todo = Todo::findOrFail($id);
+
+        return new TodoResource($todo);
+    }
+
+
 }
