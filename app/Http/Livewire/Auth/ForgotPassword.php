@@ -2,17 +2,17 @@
 
 namespace App\Http\Livewire\Auth;
 
-use Livewire\Component;
-use App\Notifications\ResetPassword;
 use App\Models\User;
+use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
+use Livewire\Component;
 
 class ForgotPassword extends Component
 {
     use Notifiable;
 
     public $email='';
-    
+
     protected $rules = [
         'email' => 'required|email',
     ];
@@ -38,19 +38,19 @@ class ForgotPassword extends Component
 
         $user = User::where('email', $this->email)->first();
 
-    
+
         if($user){
 
-    
+
             $this->notify(new ResetPassword($user->id));
 
             return back()->with('status', "We have emailed your password reset link!");
 
-    
+
         } else {
-    
+
             return back()->with('email', "We can't find any user with that email address.");
-    
+
         }
     }
 }
