@@ -14,6 +14,15 @@ class Task extends Component
     {
         $this->todos = Todo::all();
     }
+
+    public function delete($id)
+    {
+        $todo = Todo::findOrFail($id);
+        $todo->delete();
+
+        // Re-fetch todos
+        $this->todos = Todo::all();
+    }
     public function render()
     {
         return view('livewire.task');
