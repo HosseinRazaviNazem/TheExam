@@ -176,9 +176,8 @@
                       </div>
                       <div class="card-body px-0 pb-2">
 
-                          <livewire:todo-component/>
 
-
+  <livewire:task/>
 
 
 

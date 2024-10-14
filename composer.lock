@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7f15c615cf92667ea1df7c0d3187d14",
+    "content-hash": "ab56c342abbd15c71e1f5f58cba27f39",
     "packages": [
         {
             "name": "brick/math",
@@ -1049,6 +1049,61 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "joserick/laravel-livewire-discover",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joserick/laravel-livewire-discover.git",
+                "reference": "44a17237a50e09790f8b46ff812bb36f7f76c007"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joserick/laravel-livewire-discover/zipball/44a17237a50e09790f8b46ff812bb36f7f76c007",
+                "reference": "44a17237a50e09790f8b46ff812bb36f7f76c007",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": "^3.0",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.5"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Joserick\\LaravelLivewireDiscover\\LaravelLivewireDiscoverServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelLivewireDiscover": "Joserick\\LaravelLivewireDiscover\\Facades\\LaravelLivewireDiscover"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Joserick\\LaravelLivewireDiscover\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "joserick",
+                    "email": "support@joserick.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Discover and autoload multiples components of livewire by convention (componentNamespace)",
+            "support": {
+                "issues": "https://github.com/joserick/laravel-livewire-discover/issues",
+                "source": "https://github.com/joserick/laravel-livewire-discover/tree/v1.0.0"
+            },
+            "time": "2024-09-17T21:02:31+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3263,6 +3318,66 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "c7413972cf22ffdff97b68499c22baa04eddb6a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/c7413972cf22ffdff97b68499c22baa04eddb6a2",
+                "reference": "c7413972cf22ffdff97b68499c22baa04eddb6a2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-08-27T18:56:10+00:00"
         },
         {
             "name": "symfony/clock",
@@ -8215,5 +8330,5 @@
         "php": "^8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.6.0"
 }
