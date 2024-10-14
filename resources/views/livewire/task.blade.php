@@ -1,74 +1,53 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
-    <div class="table-responsive p-0">
-        <table class="table align-items-center mb-0">
+        <table>
             <thead>
             <tr>
-                <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    task Title</th>
-                <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                    Description</th>
-                <th
-                    class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                    Dead Line</th>
-                <th
-                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    priority</th>
-                <th
-                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                    status</th>
-                <th class="text-secondary opacity-7">Action</th>
+                <th>Task</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-
-            <tr>
-                <td>
-                    <div class="d-flex px-2 py-1">
-                        <div>
-                            <img src="{{ asset('assets') }}/img/team-2.jpg"
-                                 class="avatar avatar-sm me-3 border-radius-lg"
-                                 alt="user1">
+            @foreach($todos as $todo)
+                <tr>
+                    <td>
+                        <div class="d-flex px-2 py-1">
+                            <div>
+                                <img src="{{ asset('assets') }}/img/team-2.jpg"
+                                     class="avatar avatar-sm me-3 border-radius-lg"
+                                     alt="user1">
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm">{{ $todo->task_title }}</h6>
+                                <p class="text-xs text-secondary mb-0">{{ $todo->description }}</p>
+                            </div>
                         </div>
-                        <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com
-                            </p>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <p class="text-xs font-weight-bold mb-0">Manager</p>
-                    <p class="text-xs text-secondary mb-0">Organization</p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                    <span class="badge badge-sm bg-gradient-success">Online</span>
-                </td>
-                <td class="align-middle text-center text-sm">
-                    <span class="badge badge-sm bg-gradient-success">Online</span>
-                </td>
-                <td class="align-middle text-center">
-                                                <span
-                                                    class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                </td>
-                <td class="align-middle">
-                    <a href="javascript:;"
-                       class="text-secondary font-weight-bold text-xs"
-                       data-toggle="tooltip" data-original-title="Edit user">
-                        Edit
-                    </a>
-                    <a href="javascript:;"
-                       class="text-secondary font-weight-bold text-xs"
-                       data-toggle="tooltip" data-original-title="Edit user">
-                        Del
-                    </a>
-                </td>
-            </tr>
-
+                    </td>
+                    <td>
+                        <p class="text-xs font-weight-bold mb-0">{{ $todo->priority }}</p>
+                        <p class="text-xs text-secondary mb-0">Priority</p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-success">{{ $todo->status }}</span>
+                    </td>
+                    <td class="align-middle text-center">
+{{--                        <span class="text-secondary text-xs font-weight-bold">{{ $todo->deadline ? $todo->deadline->format('Y-m-d') : 'No Deadline' }}</span>--}}
+                    </td>
+                    <td class="align-middle">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            Edit
+                        </a>
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete task">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
-    </div>
 
 </div>
