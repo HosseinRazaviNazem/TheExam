@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class TodoComponent extends Component
 {
-    public $task_title, $description, $priority, $status, $deadline, $showModal = false;
+    public $task_title, $description, $priority, $status, $deadline,  $showModal = false, $editingTodoId = null;
 
     protected $rules = [
         'task_title' => 'required|string|max:255',
@@ -33,6 +33,41 @@ class TodoComponent extends Component
         $this->reset(['task_title', 'description', 'priority', 'status', 'deadline']);
 
         session()->flash('message', 'Task created successfully!');
+    }
+
+    public function editTask($id)
+    {
+        $todo = Todo::find($id);
+        if ($todo) {
+            $this->editingTodoId = $todo->id;
+            $this->task_title = $todo->task_title;
+            $this->description = $todo->description;
+            $this->priority = $todo->priority;
+            $this->status = $todo->status;
+            $this->deadline = $todo->deadline;
+            $this->showModal = true;
+        }
+    }
+
+    public function updateTask()
+    {
+        $this->validate();
+
+        $todo = Todo::find($this->editingTodoId);
+        if ($todo) {
+            $todo->update([
+                'task_title' => $this->task_title,
+                'description' => $this->description,
+                'priority' => $this->priority,
+                'status' => $this->status,
+                'deadline' => $this->deadline,
+            ]);
+        }
+
+        $this->closeModal();
+        $this->reset(['task_title', 'description', 'priority', 'status', 'deadline']);
+
+        session()->flash('message', 'Task updated successfully!');
     }
 
     public function closeModal()
