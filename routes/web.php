@@ -20,7 +20,7 @@ use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Web Routes / before redis
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
