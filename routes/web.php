@@ -48,7 +48,7 @@ Route::get('user-management', UserManagement::class)->middleware('auth')->name('
 
 //Route::group(['middleware' => 'auth'], function () {
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group([], function () {
 Route::get('dashboard', Dashboard::class)->name('dashboard');
 Route::get('billing', Billing::class)->name('billing');
 Route::get('profile', Profile::class)->name('profile');
