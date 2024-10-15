@@ -37,11 +37,10 @@ class TodoController extends Controller
     }
 
 
-    public function edit(StoreTodoRequest $request, Product $product)
+    public function edit(StoreTodoRequest $request, Todo $todo)
     {
-        $product->update($request->validated());
-        return new TodoResource(Todo::paginate($product));
-
+        $todo->update($request->validated());
+        return new TodoResource(Todo::paginate($todo));
     }
 
 
@@ -56,7 +55,6 @@ class TodoController extends Controller
             ]);
 
         } catch (TodoNotFoundException $e) {
-            // Handle the case when the Todo is not found
             return response()->json([
                 'message' => 'Todo not found',
             ], 404);
