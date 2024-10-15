@@ -12,6 +12,7 @@ class AuthController extends Controller
 {
     public function register(RegisterRequest $request)
     {
+        dd("d");
         $user= User::create($request->validated());
 
         $token = $this->getGuard()->login($user);

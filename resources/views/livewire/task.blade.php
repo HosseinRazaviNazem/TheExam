@@ -168,7 +168,8 @@
                     <span class="badge badge-sm bg-gradient-success">{{ $todo->status }}</span>
                 </td>
                 <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">{{ $todo->deadline }}</span>
+                    <span class="text-secondary text-xs font-weight-bold">
+                        {{ \App\Helpers\JalaliHelper::convertToJalali($todo->deadline) }}</span>
                 </td>
                 <td class="align-middle">
                     <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
