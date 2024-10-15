@@ -24,7 +24,7 @@ class TodoFactory extends Factory
             'description' => $this->faker->paragraph(),  // Generates a random paragraph for description
             'priority' => $this->faker->randomElement(['low', 'medium', 'high']),  // Randomly selects one of the priority values
             'status' => $this->faker->randomElement(['pending', 'in progress', 'completed']),  // Randomly selects one of the status values
-            'deadline' => $this->faker->optional()->date(),  // Generates a random date, nullable (optional)
+            'deadline' => $this->faker->date(),  // Generates a random date, nullable (optional)
 
         ];
     }
