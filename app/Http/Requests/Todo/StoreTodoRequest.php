@@ -23,9 +23,9 @@ class StoreTodoRequest extends FormRequest
     {
         return [
             'task_title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'priority' => 'required|string|in:Low,Medium,High',
-            'status' => 'required|string|in:Pending,In Progress,Completed',
+            'description' => 'required|string',
+            'priority' => 'required|in:low,medium,high',
+            'status' => 'required|in:pending,in progress,completed',
             'deadline' => 'required|date',
         ];
     }
