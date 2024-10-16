@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class TodoComponent extends Component
 {
-    public $task_title, $description, $priority, $status, $deadline,  $showModal = false, $editingTodoId = null;
+    public $task_title, $description, $priority, $status, $deadline,  $showModal = false, $editingTodoId = null;qqqqqqqqqqq
 
     protected $rules = [
         'task_title' => 'required|string|max:255',
