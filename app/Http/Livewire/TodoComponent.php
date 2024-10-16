@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class TodoComponent extends Component
 {
-    public $task_title, $description, $priority, $status, $deadline,  $showModal = false, $editingTodoId = null;
+    public $task_title, $description, $priority, $status, $deadline, $showModal = false, $editingTodoId = null;
 
     protected $rules = [
         'task_title' => 'required|string|max:255',
@@ -74,6 +74,7 @@ class TodoComponent extends Component
     {
         $this->showModal = false;
     }
+
     public function openModal()
     {
         $this->showModal = true; // Set showModal to true to open the modal
@@ -84,5 +85,23 @@ class TodoComponent extends Component
     {
         $todos = Todo::all();
         return view('livewire.todo', compact('todos'));
+    }
+
+    public function deleteTask($taskId)
+    {
+        // Find the task by its ID and delete it
+        $task = Todo::find($taskId);
+
+        if ($task) {
+            $task->delete();
+
+            // Optionally, you can emit an event or flash a message
+            session()->flash('success', 'Task deleted successfully.');
+
+            // Refresh the tasks list
+            $this->tasks = Todo::all();
+        } else {
+            session()->flash('error', 'Task not found.');
+        }
     }
 }

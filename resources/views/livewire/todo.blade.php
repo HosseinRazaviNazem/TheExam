@@ -45,7 +45,7 @@
                        data-original-title="Edit task">
                         Edit
                     </a>
-                    <a href="javascript:;" wire:click="delete({{ $todo->id }})"
+                    <a href="javascript:;" wire:click="deleteTask({{ $todo->id }})"
                        class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
                        data-original-title="Delete task">
                         Delete
