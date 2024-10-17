@@ -15,11 +15,8 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::apiResource('todos', \App\Http\Controllers\TodoController::class);
+Route::apiResource('todos', \App\Http\Controllers\TodoController::class)->middleware('auth:api');
 
 Route::group([], function ($router) {
     Route::post('/register', [AuthController::class, 'register'])->name('register');
