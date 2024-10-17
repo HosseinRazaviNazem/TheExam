@@ -6,6 +6,7 @@ use App\Exceptions\TodoNotFoundException;
 use App\Http\Requests\Todo\StoreTodoRequest;
 use App\Http\Resources\Todo\TodoCollection;
 use App\Http\Resources\Todo\TodoResource;
+use App\Jobs\ProcessTask;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,9 @@ class TodoController extends Controller
     {
         $todo = Todo::create($request->validated());
 
+
         return new TodoResource($todo);
+
     }
 
     public function show($id)
