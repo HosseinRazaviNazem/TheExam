@@ -6,6 +6,7 @@ use App\Exceptions\TodoNotFoundException;
 use App\Http\Requests\Todo\StoreTodoRequest;
 use App\Http\Resources\Todo\TodoCollection;
 use App\Http\Resources\Todo\TodoResource;
+use App\Jobs\ProcessTodo;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,12 @@ class TodoController extends Controller
     public function store(StoreTodoRequest $request)
     {
         $todo = Todo::create($request->validated());
+
+        if ($todo->priority === 'high') {
+            ProcessTodo::dispatch($todo)->onQueue('high');
+        } else {
+            ProcessTodo::dispatch($todo)->onQueue('normal');
+        }
 
         return new TodoResource($todo);
     }

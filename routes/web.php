@@ -17,6 +17,7 @@ use App\Http\Livewire\StaticSignUp;
 use App\Http\Livewire\Tables;
 use App\Http\Livewire\VirtualReality;
 use GuzzleHttp\Middleware;
+use App\Http\Controllers\Auth\AuthwebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,14 +49,26 @@ Route::get('user-management', UserManagement::class)->middleware('auth')->name('
 
 //Route::group(['middleware' => 'auth'], function () {
 
-Route::group([], function () {
-Route::get('dashboard', Dashboard::class)->name('dashboard');
-Route::get('billing', Billing::class)->name('billing');
-Route::get('profile', Profile::class)->name('profile');
-Route::get('tables', Tables::class)->name('tables');
-Route::get('notifications', Notifications::class)->name("notifications");
-Route::get('virtual-reality', VirtualReality::class)->name('virtual-reality');
-Route::get('static-sign-in', StaticSignIn::class)->name('static-sign-in');
-Route::get('static-sign-up', StaticSignUp::class)->name('static-sign-up');
-Route::get('rtl', RTL::class)->name('rtl');
+
+
+Route::group(['middleware' => 'guest'], function () {
+//    Route::get('/register', [AuthwebController::class, 'register'])->name('register');
+    Route::post('/register', [AuthwebController::class, 'register'])->name('register');
+    Route::get('/login', [AuthwebController::class, 'login'])->name('login');
+//    Route::post('/login', [AuthwebController::class, 'loginPost'])->name('login');
+
+});
+Route::group(['middleware' => 'auth'], function () {
+    Route::delete('/logout', [AuthwebController::class, 'logout'])->name('logout');
+    Route::group([], function () {
+        Route::get('dashboard', Dashboard::class)->name('dashboard');
+        Route::get('billing', Billing::class)->name('billing');
+        Route::get('profile', Profile::class)->name('profile');
+        Route::get('tables', Tables::class)->name('tables');
+        Route::get('notifications', Notifications::class)->name("notifications");
+        Route::get('virtual-reality', VirtualReality::class)->name('virtual-reality');
+        Route::get('login', StaticSignIn::class)->name('static-sign-in');
+        Route::get('register', StaticSignUp::class)->name('static-sign-up');
+        Route::get('rtl', RTL::class)->name('rtl');
+    });
 });
